@@ -33,7 +33,30 @@ object Problem03 {
         }
         .map(_._1)
 
-    println(filtered.sum)
+    println("First Part: " + filtered.sum)
+
+    val gears: Seq[Int] =
+      rawMapData.zipWithIndex.flatMap { case (line, gearY) =>
+        line.zipWithIndex.flatMap {
+          case ('*', gearX) =>
+            val numbersSeq: Seq[Int] =
+              allNumbers
+                .filter { case (_, numY, numX1, numX2) =>
+                  gearX >= numX1 - 1 && gearX <= numX2 + 1 &&
+                    gearY >= numY - 1 && gearY <= numY + 1
+                }
+                .map(_._1)
+
+            numbersSeq match {
+              case Seq(a, b) => Some(a * b)
+              case _         => None
+            }
+          case _ =>
+            None
+        }
+      }
+
+    println("Second Part: " + gears.sum)
   }
 
 }
