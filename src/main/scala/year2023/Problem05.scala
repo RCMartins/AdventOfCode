@@ -3,7 +3,6 @@ package year2023
 import better.files.File
 
 import scala.annotation.tailrec
-import scala.util.chaining.scalaUtilChainingOps
 
 object Problem05 {
 
@@ -36,7 +35,7 @@ object Problem05 {
           val mapResult: Long =
             headMap
               .find { case (_, sourceRange, rangeLen) =>
-                elem >= sourceRange && elem <= sourceRange + rangeLen
+                elem >= sourceRange && elem < sourceRange + rangeLen
               }
               .map { case (target, sourceRange, _) =>
                 target + elem - sourceRange
@@ -47,7 +46,11 @@ object Problem05 {
     }
 
     println(
-      seedNumbers.map(processElement(allMaps, _)).min
+      "First Part: " + seedNumbers.map(processElement(allMaps, _)).min
+    )
+
+    println(
+      "Second Part: " + ??? // TODO
     )
   }
 
