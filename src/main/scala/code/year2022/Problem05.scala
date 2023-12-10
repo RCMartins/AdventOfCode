@@ -1,4 +1,4 @@
-package year2022
+package code.year2022
 
 import better.files.File
 
@@ -11,13 +11,13 @@ object Problem05 {
     val lines = input.lines.toSeq
 
     val (crateLines, moveLines) = lines.span(_.nonEmpty)
-    val initalCrateLines: Seq[String] = {
+    val initialCrateLines: Seq[String] = {
       val maxSize = crateLines.map(_.length).max + 1
       crateLines.init.map(_.padTo(maxSize, ' '))
     }
 
     val initialCrates: IndexedSeq[List[String]] =
-      initalCrateLines
+      initialCrateLines
         .map {
           _.grouped(4)
             .map {

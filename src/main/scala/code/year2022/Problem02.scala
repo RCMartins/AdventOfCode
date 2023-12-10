@@ -1,4 +1,4 @@
-package year2022
+package code.year2022
 
 import better.files.File
 
