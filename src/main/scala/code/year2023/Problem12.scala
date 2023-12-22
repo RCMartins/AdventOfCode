@@ -60,30 +60,32 @@ object Problem12 {
 //        .mkString(", ")
 //    )
 
-    // Factorial function
-    def factorial(n: BigInt): BigInt =
-      if (n == 0) 1 else n * factorial(n - 1)
-
-    // Function to calculate the number of combinations
-    def combinations(n: BigInt, k: BigInt): BigInt =
-      factorial(n) / (factorial(k) * factorial(n - k))
-
     val MaxSize = 100
     val MaxAmount = 14
+
+    val possibilities: Array[Array[Option[Int]]] = Array.fill(MaxSize+1, MaxAmount+1)(None)
+
+    def calcPossibilities(size: Int, amount: Int): BigInt =
+      possibilities(size)(amount).getOrElse {
+        val v =
+          ???
+
+        possibilities(size)(amount) = Some(v)
+        v
+      }
+
     // possibilities(size of # or ?)(amount of #) = amount of possibilities
-    val possibilities: Array[Array[Int]] =
-      (1 to MaxSize).map { size =>
-        (1 to MaxAmount).map { amount =>
-          if (amount > size)
-            0
-          else
-            combinations(size, amount).toInt
-        }.toArray
-      }.toArray
+    (1 to MaxSize).foreach { size =>
+      (1 to MaxAmount).foreach { amount =>
+        if (amount > size)
+          0
+        else
+          calcPossibilities(size, amount).toInt
+      }
+    }
 
     println(
-      possibilities
-        .transpose
+      possibilities.transpose
         .take(6)
         .map(_.take(6).mkString(", "))
         .mkString("\n")
