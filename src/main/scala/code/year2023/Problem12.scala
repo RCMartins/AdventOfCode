@@ -63,12 +63,11 @@ object Problem12 {
     val MaxSize = 100
     val MaxAmount = 14
 
-    val possibilities: Array[Array[Option[Int]]] = Array.fill(MaxSize+1, MaxAmount+1)(None)
+    val possibilities: Array[Array[Option[Int]]] = Array.fill(MaxSize + 1, MaxAmount + 1)(None)
 
-    def calcPossibilities(size: Int, amount: Int): BigInt =
+    def calcPossibilities(size: Int, amount: Int): Int =
       possibilities(size)(amount).getOrElse {
-        val v =
-          ???
+        val v =          size - amount + 1
 
         possibilities(size)(amount) = Some(v)
         v
