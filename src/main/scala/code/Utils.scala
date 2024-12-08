@@ -1,4 +1,6 @@
-package object code {
+package code
+
+object Utils {
 
   implicit class TupleExtensions(val tuple: (Int, Int)) extends AnyVal {
     def +(other: (Int, Int)): (Int, Int) = (tuple._1 + other._1, tuple._2 + other._2)

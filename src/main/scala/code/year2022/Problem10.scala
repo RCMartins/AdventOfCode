@@ -1,7 +1,7 @@
 package code.year2022
 
 import better.files.File
-import code.TupleExtensions
+import code.Utils._
 
 object Problem10 {
 

@@ -1,6 +1,6 @@
 package code.year2024
 
-import code._
+import code.Utils._
 import better.files.File
 
 import scala.annotation.tailrec
